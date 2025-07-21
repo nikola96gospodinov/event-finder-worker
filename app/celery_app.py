@@ -1,11 +1,11 @@
 from celery import Celery
 
-from core.config import settings
+from core.upstash_connection_link import get_upstash_redis_url
 
 celery_app = Celery(
     "event_finder_worker",
-    broker=settings.UPSTASH_REDIS_REST_URL,
-    backend=settings.UPSTASH_REDIS_REST_URL,
+    broker=get_upstash_redis_url(),
+    backend=get_upstash_redis_url(),
     include=["app.tasks"],
 )
 
