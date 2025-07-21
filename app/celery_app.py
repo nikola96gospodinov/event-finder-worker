@@ -18,6 +18,11 @@ celery_app.conf.update(
     worker_prefetch_multiplier=1,
     worker_max_tasks_per_child=100,
     broker_connection_retry_on_startup=True,
+    task_acks_late=True,
+    worker_disable_rate_limits=False,
+    task_time_limit=60 * 60 * 3,
+    task_soft_time_limit=60 * 60 * 2,
+    result_expires=60 * 60 * 24,
 )
 
 if __name__ == "__main__":
